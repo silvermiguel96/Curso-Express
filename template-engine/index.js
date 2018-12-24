@@ -7,7 +7,7 @@ app.set("views", "./views");
 app.set("view engine", "jsx");
 
 app.get('/', function(res, req) {
-  res.render(index,  {hello: 'Hola', world: 'mundo'})
+  req.render('index', {hello: "hola", world: "mundo"})
 })
 
 const server = app.listen(8000, function () {
