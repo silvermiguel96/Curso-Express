@@ -1,9 +1,4 @@
-const express = require('express');
-const router = express.Router();
-const productMocks = require('../utils/mocks/products');
-
-
-const products = [
+const productMocks = [
   {
     name: "Red Shoes",
     price: 75,
@@ -14,10 +9,6 @@ const products = [
     price: 300,
     image: "https://black-bikes.com/wp-content/uploads/2017/03/gents-bike.jpg"
   }
-]
+];
 
-router.get('/', function(req, res){
-  res.render("products", { products })
-})
-
-module.exports = router;
+module.exports = productMocks; 
