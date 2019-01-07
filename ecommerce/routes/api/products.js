@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const ProductsService = require('../../services/products');
 
-const productService = new ProductService();
+const productsService = new ProductsService();
 
 router.get('/', async function(req, res, next) {
   const { tags } = req.query;
+  console.log('req', req.params);
 
   try {
-    const products = await productService.getProducts({ tags });
+    const products = await productsService.getProducts({ tags });
     res.status(200).json({
       data: products,
       message: 'Products listed'
@@ -20,8 +21,10 @@ router.get('/', async function(req, res, next) {
 
 router.get('/:productId', function(req, res, next) {
   const { productId } = req.params;
+  console.log('req', req.params);
+
   try {
-    const produtc = productService.getProduct({ productId });
+    const produtc = productsService.getProduct({ productId });
 
     res.status(200).json({
       data: produtc,
@@ -35,13 +38,14 @@ router.get('/:productId', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   const { body: product } = req;
+  console.log('req', req.params);
 
   try {
-    const product = productService.createProduct({ product });
+    const createdProduct = productsService.createProduct({ product });
 
     res.status(201).json({
-      data: product,
-      Message: 'Product in post'
+      data: createdProduct,
+      Message: 'Created product '
     });
   }
   catch(err){
@@ -53,8 +57,10 @@ router.put('/:productId', function(req, res, next){
 
   const { productId } = req.params;
   const { body: product } = req;
+  console.log('req', req.params, req.body);
+
   try {
-    const updateProduct = productService.updateProduct({ productId, product });
+    const updateProduct = productsService.updateProduct({ productId, product });
     res.status(200).json({
       data: updateProduct,
       message: 'products update'
@@ -67,12 +73,13 @@ router.put('/:productId', function(req, res, next){
 
 router.delete('/:prodcutId', function(req, res, next) {
   const { productId } = req.params;
+  console.log('req', req.params);
 
   try {
-    const product = prodcutService.deleteProduct({ productId });
+    const deletedProduct = productsService.deleteProduct({ productId });
 
     res.status(200).json({
-      data: product,
+      data: deletedProduct,
       message: 'Product Delete'
     });
   } catch(err){

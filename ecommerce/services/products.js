@@ -1,6 +1,6 @@
 const productsMocks = require('../utils/mocks/products');
 
-class ProductService {
+class ProductsService {
   constructor(){
 
   }
@@ -26,4 +26,4 @@ class ProductService {
   }
 }
 
-module.exports = ProductService;
+module.exports = ProductsService;
