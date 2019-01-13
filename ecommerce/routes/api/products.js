@@ -24,10 +24,10 @@ router.get('/:productId', function(req, res, next) {
   console.log('req', req.params);
 
   try {
-    const produtc = productsService.getProduct({ productId });
+    const product = productsService.getProduct({ productId });
 
     res.status(200).json({
-      data: produtc,
+      data: product,
       message: 'Product revered'
     });
   } catch(err) {
@@ -38,7 +38,8 @@ router.get('/:productId', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   const { body: product } = req;
-  console.log('req', req.params);
+
+  console.log('req', req.body );
 
   try {
     const createdProduct = productsService.createProduct({ product });
@@ -57,6 +58,7 @@ router.put('/:productId', function(req, res, next){
 
   const { productId } = req.params;
   const { body: product } = req;
+  
   console.log('req', req.params, req.body);
 
   try {
